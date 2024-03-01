@@ -12,6 +12,7 @@ Vagrant.configure(2) do |config|
       vb.name = 'ci'
     end
     ci.vm.network 'private_network', ip: '192.168.56.30'
+    ci.vm.network 'forwarded_port', guest: 8080, host: 8080, auto_correct: true, host_ip: '127.0.0.1'
   end
 
   config.vm.provision 'shell', path: 'provisioning/chapter3/user_config.sh'
